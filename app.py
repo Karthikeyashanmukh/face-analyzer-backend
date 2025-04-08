@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from deepface import DeepFace
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+import os
 import base64
 import cv2
 import numpy as np
