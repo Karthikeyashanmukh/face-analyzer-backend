@@ -1,6 +1,6 @@
 flask
-flask-cors
-gunicorn
 deepface
+tensorflow==2.11.0
 opencv-python
 numpy
+pillow
