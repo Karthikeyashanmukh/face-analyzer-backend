@@ -1,4 +1,6 @@
 flask
+flask-cors
+gunicorn
 deepface
 tensorflow==2.17.0
 opencv-python
