@@ -7,9 +7,12 @@ import os
 import base64
 import cv2
 import numpy as np
+from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://face-analyzer-frontend-51vs.vercel.app"])
+
+
 
 def decode_base64_image(base64_string):
     img_data = base64.b64decode(base64_string)
@@ -17,6 +20,13 @@ def decode_base64_image(base64_string):
     return cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
 @app.route('/analyze', methods=['POST'])
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "https://face-analyzer-frontend-51vs.vercel.app"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
+    response.headers["Access-Control-Allow-Methods"] = "GET,POST,OPTIONS"
+    return response
+
 def analyze():
     try:
         data = request.json
