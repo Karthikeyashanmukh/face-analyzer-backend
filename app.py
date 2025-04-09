@@ -20,7 +20,7 @@ def decode_base64_image(base64_string):
     return cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
 
 @app.route('/analyze', methods=['POST'])
-@app.after_request
+
 def add_cors_headers(response):
     response.headers["Access-Control-Allow-Origin"] = "https://face-analyzer-frontend-51vs.vercel.app"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
